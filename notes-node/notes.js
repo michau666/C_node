@@ -15,7 +15,7 @@ let saveNotes = (notes) => {
     fs.writeFileSync('notes_data.json', JSON.stringify(notes));
 };
 
-var addNote = (title, body) => {
+let addNote = (title, body) => {
     let notes = fetchNotes();
     let note = {
         title, 
@@ -30,23 +30,36 @@ var addNote = (title, body) => {
     }
 };
 
-var getAll = () => {
+let getAll = () => {
     console.log('Getting all notes');
 };
 
-var getNote = (title) => {
-    console.log('Get note', title);
+let getNote = (title) => {
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter((note) => note.title === title);
+    return filteredNotes[0];
+    
 };
 
-var removeNote = (title) => {
-    console.log('Removing note', title);
+let removeNote = (title) => {
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter((note) => note.title !== title);   
+    saveNotes(filteredNotes);
+    return notes.length !== filteredNotes.length;
+};
+
+let logNote = (note) => {
+    console.log('-------');
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
 };
 
 module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };
 
 /*

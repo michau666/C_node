@@ -16,16 +16,25 @@ const command = argv._[0];
 if (command === 'add') {
     let note = notes.addNote(argv.title, argv.body);
     if (note) {
-        console.log(`Title ${note.title} has been just added!`);
+        notes.logNote(note);
+        console.log(`Note has been just added!`);
     } else {
         console.log('Title already in use');
     }
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
-    notes.getNote(argv.title);
+    let note = notes.getNote(argv.title);
+    if (note) {
+      notes.logNote(note);
+    } else {
+      console.log('There is no note with this name, sorry :(');
+    }
+  
 } else if (command === 'remove') {
-    notes.removeNote(argv.title);
+    let noteRemoved = notes.removeNote(argv.title);
+  let message = noteRemoved ? 'Note removed': 'Note not removed';
+  console.log(message);
 } else {
     console.log('Command not recognized');
 }
