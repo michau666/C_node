@@ -1,0 +1,19 @@
+{
+  "name": "node-mssql-sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "hbs": "^4.0.0",
+    "sequelize": "^4.32.2",
+    "tedious": "^2.2.4",
+    "validator": "^9.4.0"
+  }
+}
